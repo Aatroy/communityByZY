@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>欢迎您注册</title>
+
+
+    <div th:replace="commonPage::comLink"></div>
+    <script src="js/form.js"></script>
+</head>
+<body>
+
+<!-- page preloader -->
+<div th:replace="commonPage::#loader">
+</div><!-- end loading -->
+
+<!--        START HEADER AREA-->
+<div th:replace="commonPage::comHeaderMune"></div>
+<!--        END HEADER AREA-->
+
+<!-- ================================
+    START BREADCRUMB AREA
+================================= -->
+<section class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="section-heading">
+                        <h2 class="section__title">注 册</h2>
+                    </div>
+                </div><!-- end breadcrumb-content -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+    <div class="breadcrumb-list">
+        <ul class="list-items">
+            <li class="active__list-item"><a th:href="@{/index}">主页</a></li>
+            <li>注 册</li>
+        </ul>
+    </div>
+</section><!-- end breadcrumb-area -->
+<!-- ================================
+    END BREADCRUMB AREA
+================================= -->
+
+<!-- ================================
+       START CONTACT AREA
+================================= -->
+<section class="contact-area padding-top-140px padding-bottom-120px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <div class="login-form">
+                    <div class="user-form">
+                        <div class="section-heading text-center">
+                            <h5 class="section__meta">创建账户</h5>
+                            <h2 class="section__title font-size-30">请创建您的账户!</h2>
+                            <p class="font-size-16 mt-2">
+                                您可以使用您的社交账号进行登录<br>
+                                请选择以下方式登录.
+                            </p>
+                        </div><!-- end section-heading -->
+                        <div class="contact-form-action mt-4">
+                            <form name="form1" method="post" th:action="@{/register}" onsubmit="return checkpost()">
+                                <label style="color: red" th:text="${msg}"></label>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="userName" placeholder="用户名" onkeyup="checkUserName()">
+                                                <span class="la la-user input-icon"></span>
+                                                <div id="divUser"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="password" name="password" placeholder="密码" class="form-control" onkeyup="checkPassword()"/>
+                                                <span class="la la-paw input-icon"></span>
+                                                <div id="divPwd"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="password" name="confirm" placeholder="确认密码" class="form-control" onkeyup="checkConfirm()"/>
+                                                <span class="la la-lock input-icon"></span>
+                                                <div id="divCfm"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="text" name="fullName" autofocus="" placeholder="真实姓名" class="form-control" onkeyup="checkFullName()">
+                                                <span class="la la-user-times input-icon"></span>
+                                                <div id="divFull"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="text" name="telephone" autofocus="" placeholder="联系电话" class="form-control" onkeyup="checkTel()">
+                                                <span class="la la-phone input-icon"></span>
+                                                <div id = "divTel"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="text" name="Email" autofocus="" placeholder="电子邮件" class="form-control" onkeyup="checkEmail()">
+                                                <span class="la la-envelope-o input-icon"></span>
+                                                <div id="divEmail"></div>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input type="text" name="city" autofocus="" placeholder="省份及城市" class="form-control">
+                                                <span class="la la-location-arrow input-icon"></span>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <div class="custom-checkbox d-block mr-0">
+                                    <div class="radios">
+                                        <label for="radio-01" class="label_radio col-lg-6 col-sm-6">
+                                            <input type="radio" checked="" value="man" id="radio-01" name="gender"> 男
+                                        </label>
+                                            <input type="radio" value="wowan" id="radio-02" name="gender"> 女
+                                    </div>
+
+                                    <div class="radios">
+                                        <label for="radio-01" class="label_radio col-lg-6 col-sm-6">
+                                            <input type="radio" checked="" value="noDoctor" id="radio-03" name="job"> 非医生
+                                        </label>
+                                            <input type="radio" value="doctor" id="radio-04" name="job"> 医生
+                                    </div>
+
+                                                </div><!-- end custom-checkbox -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="role" value="customer">
+
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <div class="custom-checkbox d-block mr-0">
+                                                    <input type="checkbox" id="chb3">
+                                                    <label for="chb3">我已阅读并同意 <a href="#" class="color-text"> 隐私及其服务政策。 </a></label>
+                                                </div><!-- end custom-checkbox -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="btn-box">
+                                            <div class="form-group text-center mb-0">
+                                                <button class="template-btn border-0 w-100" type="submit">创建我的账户！</button>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                </div><!-- end row -->
+                            </form>
+                            <br>
+                            <a th:href="@{/login}">
+                                <button class="template-btn border-0 w-100"  type="button" >已有账户?去登录！</button>
+                            </a>
+                        </div><!-- end contact-form-action -->
+                    </div>
+                </div>
+            </div><!-- end col-lg-7 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end contact-area -->
+
+<!-- ================================
+       START CONTACT AREA
+================================= -->
+
+<!-- ================================
+         END FOOTER AREA
+================================= -->
+<div th:replace="commonPage::comFooter"></div>
+<!-- ================================
+          END FOOTER AREA
+================================= -->
+
+<!-- start scroll top -->
+<div id="scroll-top">
+    <i class="fa fa-angle-up" title="Go top"></i>
+</div>
+<!-- end scroll top -->
+
+
+<div th:replace="commonPage::comScript"></div>
+</body>
+</html>

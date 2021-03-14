@@ -1,0 +1,6 @@
+#配置mybatis规则
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+

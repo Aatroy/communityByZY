@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title> 注册 </title>
+
+    <link href="../static/css/styleLogin.css" rel="stylesheet">
+    <link href="../static/css/style-responsive.css" rel="stylesheet">
+    <link href="../static/css/line-awesome.css" rel="stylesheet">
+
+    <script src="../static/js/form.js"></script>
+
+</head>
+
+<body class="login-body">
+
+<div class="container">
+
+    <form name="form1" class="form-signin" action="/register" method="post" onsubmit="return checkpost()">
+        <div class="form-signin-heading text-center">
+            <h1 class="sign-title"> 注册 </h1>
+            <img src="../static/images/login-logo.png" alt=""/>
+        </div>
+
+
+        <div class="login-wrap">
+            <p> 请于下方填写您的账户信息 </p>
+            <label style="color: red" th:text="${msg}"></label>
+            <input type="text" name="userName" placeholder="用户名" class="form-control" onkeyup="checkUserName()"/>
+            <div id="divUser"></div>
+            <input type="password" name="password" placeholder="密码" class="form-control" onkeyup="checkPassword()"/>
+            <div id="divPwd"></div>
+            <input type="password" name="confirm" placeholder="确认密码" class="form-control" onkeyup="checkConfirm()"/>
+            <div id="divCfm"></div>
+
+            <br>
+            <p>请填写您的个人信息</p>
+            <br>
+            <input type="text" name="fullName" autofocus="" placeholder="名字" class="form-control" onkeyup="checkFullName()">
+            <div id="divFull"></div>
+            <input type="text" name="telephone" autofocus="" placeholder="电话" class="form-control" onkeyup="checkTel()">
+            <div id = "divTel"></div>
+            <input type="text" name="Email" autofocus="" placeholder="电子邮件" class="form-control" onkeyup="checkEmail()">
+            <div id="divEmail"></div>
+            <input type="text" name="city" autofocus="" placeholder="省份及城市" class="form-control">
+            <input type="hidden" name="role" value="customer">
+            <div class="radios">
+                <label for="radio-01" class="label_radio col-lg-6 col-sm-6">
+                    <input type="radio" checked="" value="man" id="radio-01" name="gender"> 男
+                </label>
+                <label for="radio-02" class="label_radio col-lg-6 col-sm-6">
+                    <input type="radio" value="wowan" id="radio-02" name="gender"> 女
+                </label>
+            </div>
+
+            <div class="radios">
+                <label for="radio-01" class="label_radio col-lg-6 col-sm-6">
+                    <input type="radio" checked="" value="noDoctor" id="radio-03" name="job"> 非医生
+                </label>
+                <label for="radio-02" class="label_radio col-lg-6 col-sm-6">
+                    <input type="radio" value="doctor" id="radio-04" name="job"> 医生
+                </label>
+            </div>
+            <a th:href="@{/index}"><i class="la la-backward"></i> 回到主页 </a>
+
+
+            <button type="submit" class="btn btn-lg btn-login btn-block">
+                <i class="fa fa-check"></i>
+            </button>
+
+
+            <div class="registration">
+                已经注册过了？
+                <a href="/login" class="">
+                    点击登录
+                </a>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="../static/js/jquery-1.10.2.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/modernizr.min.js"></script>
+
+</body>
+</html>

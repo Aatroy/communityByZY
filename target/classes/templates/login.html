@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>登 录</title>
+
+    <!-- Favicon -->
+    <link rel="icon" sizes="16x16" href="images/favicon.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500&display=swap" rel="stylesheet">
+
+    <div th:replace="commonPage::comLink"></div>
+</head>
+<body>
+
+<!-- page preloader -->
+<div th:include="commonPage::#loader">
+</div><!-- end loading -->
+
+<!--======================================
+        START HEADER AREA
+    ======================================-->
+<div th:replace="commonPage::comHeaderMune"></div>
+<!--======================================
+        END HEADER AREA
+======================================-->
+
+<!-- ================================
+    START BREADCRUMB AREA
+================================= -->
+<section class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-content text-center">
+                    <div class="section-heading">
+                        <h2 class="section__title">登 录</h2>
+                    </div>
+                </div><!-- end breadcrumb-content -->
+            </div><!-- end col-lg-12 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+    <div class="breadcrumb-list">
+        <ul class="list-items">
+            <li class="active__list-item"><a href="index.html">主 页</a></li>
+            <li>登 录</li>
+        </ul>
+    </div>
+</section><!-- end breadcrumb-area -->
+<!-- ================================
+    END BREADCRUMB AREA
+================================= -->
+
+<!-- ================================
+       START CONTACT AREA
+================================= -->
+<section class="contact-area padding-top-140px padding-bottom-120px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mx-auto">
+                <div class="login-form">
+                    <div class="user-form">
+                        <div class="section-heading text-center">
+                            <h5 class="section__meta">登录</h5>
+                            <h2 class="section__title font-size-30">请登录您的账户</h2>
+                            <p class="font-size-16 mt-2">
+                                 您可以使用您的社交账号进行登录<br>
+                                 请选择以下方式登录.
+                            </p>
+                        </div><!-- end section-heading -->
+                        <div class="contact-form-action mt-4">
+                            <form method="post" th:action="@{/login}">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <button class="template-btn btn-bg-1 border-0 w-100" type="submit">
+                                                <i class="fa fa-weibo mr-2"></i> 微博
+                                            </button>
+                                        </div>
+                                    </div><!-- end col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <button class="template-btn btn-bg-2 border-0 w-100" type="submit">
+                                                <i class="fa fa-qq mr-2"></i> QQ
+                                            </button>
+                                        </div>
+                                    </div><!-- end col-lg-4 -->
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <button class="template-btn btn-bg-3 border-0 w-100" type="submit">
+                                                <i class="fa fa-wechat mr-2"></i> 微信
+                                            </button>
+                                        </div>
+                                    </div><!-- end col-lg-4 -->
+                                    <div class="col-lg-4" >
+                                        <div class="form-group">
+                                            <a th:href="@{/login/alipayLogin}">
+                                            <button class="template-btn btn-bg-4 border-0 w-100" type="submit">
+                                                <i class="icon-zoom-in mr-2"></i> 支付宝
+                                            </button>
+                                            </a>
+                                        </div>
+                                    </div><!-- end col-lg-4 -->
+
+                                    <div class="col-lg-12">
+                                        <div class="account-assist mt-4 mb-4 text-center">
+                                            <p class="account__desc">或</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input class="form-control" type="text" name="userName" placeholder="用户名">
+                                                <span class="la la-user input-icon"></span>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-box">
+                                            <div class="form-group">
+                                                <input class="form-control" type="password" name="password" placeholder="密码">
+                                                <span class="la la-lock input-icon"></span>
+                                                <br>
+                                                <label style="color: red" th:text="${msg}"></label>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="custom-checkbox mr-0 d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <input type="checkbox" id="remember" name="remember">
+                                                    <label for="remember"  class="mb-0">记住登录状态(两周免登录)</label>
+                                                </div>
+                                                <div>
+                                                    <a href="recover.html" class="text-color-2 font-weight-medium ">忘记密码?</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="btn-box">
+                                            <div class="form-group text-center mb-0">
+                                                <button class="template-btn border-0 w-100" type="submit">登 录</button>
+                                            </div><!-- end form-group -->
+                                        </div>
+                                    </div>
+                                </div><!-- end row -->
+                            </form>
+                            <br>
+                            <a th:href="@{/register}">
+                                <button class="template-btn border-0 w-100"  type="button" >还没有账户？去注册！</button>
+                            </a>
+                        </div><!-- end contact-form-action -->
+                    </div>
+                </div>
+            </div><!-- end col-lg-7 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end contact-area -->
+<!-- ================================
+       START CONTACT AREA
+================================= -->
+
+<!-- ================================
+         END FOOTER AREA
+================================= -->
+<div th:replace="commonPage::comFooter"></div>
+<!-- ================================
+          END FOOTER AREA
+================================= -->
+
+<!-- start scroll top -->
+<div id="scroll-top">
+    <i class="fa fa-angle-up" title="Go top"></i>
+</div>
+<!-- end scroll top -->
+
+
+<!-- template js files -->
+<div th:replace="commonPage::comScript"></div>
+</body>
+</html>
