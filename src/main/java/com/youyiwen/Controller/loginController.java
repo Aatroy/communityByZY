@@ -2,14 +2,19 @@ package com.youyiwen.Controller;
 
 import com.youyiwen.Bean.User;
 import com.youyiwen.Service.UserService;
+import com.youyiwen.dto.AccessTokenDTO;
+import com.youyiwen.dto.GithubUser;
+import com.youyiwen.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.*;
+import java.io.IOException;
 
 /**
  * @Author: zhaoyang
@@ -99,6 +104,25 @@ public class loginController {
             response.addCookie(cookie);
         }
         request.getSession().removeAttribute("loginUser");
+        return "index";
+    }
+
+//    使用Github登陆
+
+    @Autowired
+    private GithubProvider githubProvider;
+    @GetMapping("/callback")
+    public String callback(@RequestParam(name="code") String code,
+                           @RequestParam(name = "state") String state)  {
+        AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
+        accessTokenDTO.setClient_id("Iv1.abd885095074893f");
+        accessTokenDTO.setClient_secret("24025f59df674b244bd7da623e2c8a955acb007b");
+        accessTokenDTO.setCode(code);
+        accessTokenDTO.setRedirect_uri("http://localhost:8080/callback");
+        accessTokenDTO.setState(state);
+        String accessToken = githubProvider.getAccessToken(accessTokenDTO);
+        GithubUser user = githubProvider.getUser(accessToken);
+        System.out.println(user);
         return "index";
     }
 }

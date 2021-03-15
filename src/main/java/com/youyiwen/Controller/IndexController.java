@@ -62,4 +62,9 @@ public class IndexController {
     public String userCenter(){
         return "userCenter";
     }
+
+    @GetMapping("/communityCenter")
+    public String community(){
+        return "communityCenter";
+    }
 }
