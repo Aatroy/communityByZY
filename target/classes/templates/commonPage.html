@@ -77,7 +77,6 @@
                                     <a th:href="@{/register}"> 注 册 </a>
                                 </li>
                                 <li th:if="${session.loginUser}!=null">
-
                                     <a href="#">欢迎您，[[${session.loginUser.getUserName()}]]</a>
                                     <ul class="dropdown-menu-item">
                                         <li><a th:href="@{/userCenter}">个人中心</a></li>

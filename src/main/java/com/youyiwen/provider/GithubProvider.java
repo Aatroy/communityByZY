@@ -1,8 +1,8 @@
 package com.youyiwen.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.youyiwen.dto.AccessTokenDTO;
-import com.youyiwen.dto.GithubUser;
+import com.youyiwen.Bean.AccessToken;
+import com.youyiwen.Bean.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 @Component
 public class GithubProvider {
-    public String getAccessToken(AccessTokenDTO accessTokenDTO){
+    public String getAccessToken(AccessToken accessTokenDTO){
          MediaType mediaType  = MediaType.get("application/json; charset=utf-8");
 
         OkHttpClient client = new OkHttpClient();
@@ -38,7 +38,8 @@ public class GithubProvider {
     public GithubUser getUser(String accessToken){
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://api.github.com/user?access_token=" + accessToken)
+                .url("https://api.github.com/user")
+                .header("Authorization","token "+ accessToken)
                 .build();
         Response response = null;
         try {

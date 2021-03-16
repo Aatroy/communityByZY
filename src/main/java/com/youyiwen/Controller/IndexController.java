@@ -67,4 +67,9 @@ public class IndexController {
     public String community(){
         return "communityCenter";
     }
+
+    @GetMapping("/first")
+    public String firstGithubLogin(){
+        return "firstGithubLogin";
+    }
 }

@@ -1,4 +1,4 @@
-package com.youyiwen.dto;
+package com.youyiwen.Bean;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @Date: 2021/03/15
  */
 @Data
-public class AccessTokenDTO {
+public class AccessToken {
     private String client_id;
     private String client_secret;
     private String code;
